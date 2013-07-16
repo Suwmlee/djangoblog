@@ -10,11 +10,19 @@
     <div class="entry-content">
     {% autoescape off %}
         {{ post.body }}
-    {% endautoescape %}
+        {% endautoescape %}
     </div><!-- .entry-content -->
+    <footer class="entry-meta">
+    本条目发布于 <a><time class="entry-date" >{{post.timestamp}}</time></a>
+    </footer><!-- .entry-meta -->
 </article>
+<nav class="nav-single">
 {% endif %}
 {% endfor %}
+<span class="nav-previous"><a href="/article/{{pre}}" rel="prev"><span class="meta-nav">&larr;</span>上一篇</a></span>
+<span class="nav-next"><a href="/article/{{nex}}" rel="next">下一篇 <span class="meta-nav">&rarr;</span></a></span>
+</nav><!-- .nav-single -->
+
 {% endblock %}
 
 {% block linking %}

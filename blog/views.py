@@ -26,8 +26,22 @@ def show_post(request, pid):
     links = linking.objects.all().order_by("-id")
     #posts = BlogPost.objects.filter(id=int(pid))
     pid=int(pid)
+    if pid==1:
+        pre=1
+    else:
+        pre=pid-1
+    i=0
+    for post in posts:
+        i=i+1
+    if pid>=i:
+        pid=i
+        nex=i
+    else:
+        nex=pid+1
     t = loader.get_template("article.html")
-    c = Context({ 'posts': posts,
-                  'links': links,
-                  'pid'  : pid})
+    c = Context({ 'posts' : posts ,
+                  'links' : links ,
+                  'pre'   : pre   ,
+                  'nex'   : nex   ,
+                  'pid'   : pid})
     return HttpResponse(t.render(c))
