@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for post in posts %}
+{% if post.id = pid %}
+<article>
+    <header class="entry-header">
+    <h1 class="entry-title">{{ post.title }}</h1>
+    </header><!-- .entry-header -->
+    <div class="entry-content">
+        <p>{{ post.body }}</p>
+    </div><!-- .entry-content -->
+</article>
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block second %}
+   <ul>
+{% for post in posts %}
+        <li>
+        <a href="/post/{{post.title}}" >{{ post.title }}</a>
+        </li>
+{% endfor %}
+    </ul>
+{% endblock %}
+

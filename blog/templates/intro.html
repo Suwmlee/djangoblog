@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<p>asdasd</p>
+{% endblock %}
+
+
+{% block linking %}
+   <ul>
+{% for link in links %}
+        <li> <a href="{{link.body}}" >{{ link.title }}</a>  </li>
+{% endfor %}
+    </ul>
+{% endblock %}
+
+
+{% block recent-post %}
+   <ul>
+{% for post in posts %}
+        <li> <a href="/article/{{post.id}}" >{{ post.title }}</a> </li>
+{% endfor %}
+    </ul>
+{% endblock %}
