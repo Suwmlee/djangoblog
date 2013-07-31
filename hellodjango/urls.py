@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 import settings
-# admin.autodiscover()
+admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     #url(r'^$',home),
@@ -35,7 +35,7 @@ urlpatterns += patterns('blog.views',
     url(r'^intro$',intro),
     url(r'^test$',test),
     url(r'^article/(?P<pid>\d+)/', show_post ),
-    url(r'^blog/(?P<pid>\d+)/commentshow/$', 'show_post', name='showcomment'),
+    url(r'^article/(?P<pid>\d+)/commentshow/$', 'show_post', name='showcomment'),
 )
 
 #urlpatterns+=patterns('',

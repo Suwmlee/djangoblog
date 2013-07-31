@@ -22,27 +22,29 @@
 <span class="nav-next"><a href="/article/{{nex}}" rel="next">下一篇 <span class="meta-nav">&rarr;</span></a></span>
 </nav><!-- .nav-single -->
 
-<!--<div id="comments" class="comments-area">-->
+<div id="comments" class="comments-area">
 
-    <!--<div id="respond">-->
-
-<article id="cmt">
     {% get_comment_count for blog as comment_count %}    
-        <h4 class="muted comtop">{{ comment_count }} Comments</h4>
+        <h2 class="muted comtop" >{{ comment_count }} Comments</h2>
         <hr class="soften">  
     {% get_comment_list for blog as blog_com %}
+<ol class="commentlist">
     {% for comment in blog_com %}
-    <div class="container-fluid none-padding">
-        <p><small>{{ comment.name }}</small></p>
-            <p class="muted"><small>{{ comment.submit_date|date:"F,j,Y" }}</small></p>      
+    <li>
+    <article  class="comment">
+    <header class="comment-meta comment-author vcard">
+    <img alt='' src='https://www.djangoproject.com/s/img/site/hdr_logo.b19c5e60269d.gif' height='44' width='44' />
+        <cite>{{ comment.name }}</cite>
+        <time>{{ comment.submit_date|date:"F,j,Y" }} </time>
+    </header><!-- .comment-meta -->
+
         {% autoescape off %}
             {{ comment.comment }}           
         {% endautoescape %}
-        </div>
-        <hr class="soften">                   
+    </article><!-- #comment-## -->
+    </li>
     {% endfor %}
-</article>
-
+</ol><!-- .commentlist -->
 
 {%get_comment_form for blog as form%}
 <form action='{%comment_form_target%}' method='post'>
@@ -61,8 +63,7 @@
 </form>
 
 
-    <!--</div>[> #respond <]-->
-<!--</div>[> #comments .comments-area <]-->
+</div>
 
 
 
