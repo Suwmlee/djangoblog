@@ -9,15 +9,25 @@
 <html lang="zh-CN">
 <!--<![endif]-->
 <head>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <title>Hello Django</title>
-<!--<link rel='stylesheet' id='twentytwelve-style-css'  href='/site_medias/style.css' type='text/css' media='all' />-->
-<link rel='stylesheet' id='twentytwelve-style-css'  href='http://markchen.me/wp-content/themes/twentytwelve/style.css?ver=3.5.1' type='text/css' media='all' />
+
+<link rel='stylesheet' id='twentytwelve-style-css'  href='/site_media/css/style.css' type='text/css' media='all' />
 <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
 <style type="text/css" id="custom-background-css">
 body.custom-background { background-color: #5b5b5b; }
 </style>
+<!--tinyMCE  -->
+<script language="javascript" type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script> 
+<script language="javascript" type="text/javascript"> 
+   tinyMCE.init({ 
+      mode : "textareas" 
+   }); 
+</script> 
+<!--/tinyMCE -->
+
 </head>
 
 <body class="single single-post postid-520 single-format-standard custom-background custom-font-enabled single-author">
@@ -29,13 +39,12 @@ body.custom-background { background-color: #5b5b5b; }
 	</hgroup>
 
     <nav id="site-navigation" class="main-navigation" role="navigation">
-    	<!--<h3 class="menu-toggle">菜单</h3>-->
-    	<!--<a class="assistive-text" href="#content" title="跳至内容">跳至内容</a>-->
     <div class="nav-menu">
         <ul>
             <li ><a href="/index" title="首页">首页</a></li>
             <li class="page_item page-item-533"><a href="/intro">简介</a></li>
             <li class="page_item page-item-129"><a href="/e/admin">发布</a></li>
+            <li class="page_item page-item-129"><a href="/test">测试</a></li>
         </ul>
     </div>
     </nav><!-- #site-navigation -->

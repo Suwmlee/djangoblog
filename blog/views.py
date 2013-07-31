@@ -1,8 +1,10 @@
 # Create your views here.
-from django.template import loader, Context
+from django.template import loader, Context ,RequestContext
 from django.http import HttpResponse
 from blog.models import BlogPost
 from linking.models import linking
+from django.shortcuts import render_to_response
+
 def archive(request):
     links = linking.objects.all().order_by("-id")
     posts = BlogPost.objects.all().order_by("-timestamp")
@@ -19,10 +21,18 @@ def intro(request):
                  'links'  : links})
     return HttpResponse(t.render(c))
 
+def test(request):
+    links = linking.objects.all().order_by("-id")
+    posts = BlogPost.objects.all().order_by("-timestamp")
+    t = loader.get_template("test.html")
+    c = Context({
+                'posts': posts,
+                 'links'  : links})
+    return HttpResponse(t.render(c))
 
 def show_post(request, pid):
-    #return HttpResponse(pid)
     posts = BlogPost.objects.all().order_by("-timestamp")
+    blog  = BlogPost.objects.get(id=pid)
     links = linking.objects.all().order_by("-id")
     #posts = BlogPost.objects.filter(id=int(pid))
     pid=int(pid)
@@ -44,4 +54,10 @@ def show_post(request, pid):
                   'pre'   : pre   ,
                   'nex'   : nex   ,
                   'pid'   : pid})
-    return HttpResponse(t.render(c))
+    #return HttpResponse(t.render(c),)
+    return render_to_response("article.html", {'posts':posts,'links':links,'pre':pre,'nex':nex,'pid':pid,'blog':blog}, context_instance=RequestContext(request))
+
+#def blog_show_comment(request, id=''):
+    #blog = BlogPost.objects.get(id=id)
+    #return render_to_response('blog_comments_show.html', {"blog": blog})
+

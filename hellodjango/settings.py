@@ -65,8 +65,9 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
-
+STATIC_PATH = './static'    #css
+STATIC_URL = '/static/'     #tiny_mce
+#STATIC_URL = ''
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -128,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'linking',
     'tinymce',
+    'django.contrib.comments',
     'blog'
 )
 

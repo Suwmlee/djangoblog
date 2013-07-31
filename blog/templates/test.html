@@ -1,27 +1,25 @@
 {% extends "base.html" %}
+{% load comments %}
 {% block content %}
 
-{% for post in posts %}
-{% if post.id = pid %}
-<article>
-    <header class="entry-header">
-    <h1 class="entry-title">{{ post.title }}</h1>
-    </header><!-- .entry-header -->
-    <div class="entry-content">
-        <p>{{ post.body }}</p>
-    </div><!-- .entry-content -->
-</article>
-{% endif %}
-{% endfor %}
+
+
 {% endblock %}
 
-{% block second %}
+
+{% block linking %}
    <ul>
-{% for post in posts %}
-        <li>
-        <a href="/post/{{post.title}}" >{{ post.title }}</a>
-        </li>
+{% for link in links %}
+        <li> <a href="{{link.body}}" >{{ link.title }}</a>  </li>
 {% endfor %}
     </ul>
 {% endblock %}
 
+
+{% block recent-post %}
+   <ul>
+{% for post in posts %}
+        <li> <a href="/article/{{post.id}}" >{{ post.title }}</a> </li>
+{% endfor %}
+    </ul>
+{% endblock %}
