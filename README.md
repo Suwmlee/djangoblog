@@ -1,3 +1,5 @@
-简单的Django blog
+Django blog
 
-使用MYSQL
+Database: MYSQL
+
+http://1.djangoworld.duapp.com/
