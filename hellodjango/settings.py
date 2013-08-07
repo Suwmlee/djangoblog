@@ -1,7 +1,8 @@
 # coding=utf-8
 # Django settings for hellodjango project.
 
-DEBUG = True
+DEBUG = False
+#DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -23,7 +24,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -61,11 +62,11 @@ MEDIA_URL = ' '
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = './static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_PATH = './static'    #css
+STATIC_PATH = './static'    #css   OK
 STATIC_URL = '/static/'     #tiny_mce
 #STATIC_URL = ''
 # Additional locations of static files
@@ -74,7 +75,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #PROJECT_DIR+'/static',
-    #'static/css'
+    #'./static/'
 )
 
 # List of finder classes that know how to find static files in
@@ -86,7 +87,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '%#z)ailga-8h7b^4@##a)&amp;c!+3zxk&amp;-+)&amp;3rs&amp;*ysc#=7gvgdh'
+#SECRET_KEY = '%#z)ailga-8h7b^4@##a)&amp;c!+3zxk&amp;-+)&amp;3rs&amp;*ysc#=7gvgdh'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

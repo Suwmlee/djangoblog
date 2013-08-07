@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^comments/',include('django.contrib.comments.urls')),
     #加入css
     url(r'^site_media/(?P<path>.*)','django.views.static.serve',{'document_root': settings.STATIC_PATH}),
+    # static
+    url(r'^static/(?P<path>.*)','django.views.static.serve',{'document_root': settings.STATIC_PATH}),
     #url(r'^test$',include('blog.urls')),
     # url(r'^$', 'hellodjango.views.home', name='home'),
     # url(r'^hellodjango/', include('hellodjango.foo.urls')),
@@ -34,8 +36,10 @@ urlpatterns += patterns('blog.views',
     url(r'^index$',archive),
     url(r'^intro$',intro),
     url(r'^test$',test),
-    url(r'^article/(?P<pid>\d+)/', show_post ),
-    url(r'^article/(?P<pid>\d+)/commentshow/$', 'show_post', name='showcomment'),
+    url(r'^article/(?P<pid>\d+)/', 'show_post',name='showcomment'),
+    #url(r'^(?P<path>.*)$',notfind),
+    #url(r'^article/(?P<pid>\d+)/commentshow/$', 'show_post', name='showcomment'),
+    #url(r'^(?P<path>.*)$','django.views.static.serve',{'document_root': settings.STATIC_PATH}),
 )
 
 #urlpatterns+=patterns('',
