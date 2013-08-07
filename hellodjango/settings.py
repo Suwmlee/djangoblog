@@ -1,8 +1,8 @@
 # coding=utf-8
 # Django settings for hellodjango project.
 
-DEBUG = False
-#DEBUG = True
+#DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

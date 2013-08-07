@@ -8,7 +8,7 @@ from tinymce import models as tinymce_models
 class BlogPost(models.Model):
     title = models.CharField(max_length=150)
     #body = models.TextField()
-    #body  = HTMLField()
+    #abstract  = models.TextField()
     body  = tinymce_models.HTMLField()
     timestamp = models.DateTimeField()
 

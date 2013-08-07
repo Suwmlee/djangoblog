@@ -4,17 +4,20 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+admin.autodiscover()
+from blog.feed import LatestEntriesFeed
 
 import settings
-admin.autodiscover()
+
 urlpatterns = patterns('',
     # Examples:
     #url(r'^$',home),
     #url(r'^test/$',test),
     url(r'^$',include('blog.urls')),
+    url(r'^latest/feed/$',LatestEntriesFeed()),
     url(r'^tinymce/',include('tinymce.urls')),
     url(r'^comments/',include('django.contrib.comments.urls')),
-    #加入css
+    #加入css,js
     url(r'^site_media/(?P<path>.*)','django.views.static.serve',{'document_root': settings.STATIC_PATH}),
     # static
     url(r'^static/(?P<path>.*)','django.views.static.serve',{'document_root': settings.STATIC_PATH}),
