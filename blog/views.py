@@ -36,6 +36,7 @@ def show_post(request, pid):
     links = linking.objects.all().order_by("-id")
     #posts = BlogPost.objects.filter(id=int(pid))
     pid=int(pid)
+    floor=1;
     if pid==1:
         pre=1
     else:
@@ -53,6 +54,7 @@ def show_post(request, pid):
                   'links' : links ,
                   'pre'   : pre   ,
                   'nex'   : nex   ,
+                  'floor' : floor ,
                   'pid'   : pid})
     #return HttpResponse(t.render(c),)
     return render_to_response("article.html", {'posts':posts,'links':links,'pre':pre,'nex':nex,'pid':pid,'blog':blog}, context_instance=RequestContext(request))

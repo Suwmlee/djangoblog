@@ -1,18 +1,33 @@
 {% extends "base.html" %}
+
+{% block title %}
+<title>Hello Django</title>
+{% endblock %}
+
 {% block content %}
 {% for post in posts %}
 <!--<h1>{{ post.title }}</h1>-->
 <article>
     <header class="entry-header">
     <h1 class="entry-title"><a href="/article/{{ post.id }}">{{ post.title }}</a></h1>
+<div class="comments-link">
+    <a href="/article/{{ post.id}}" title=""><span class="leave-reply">Read More</span></a>
+</div><!-- .comments-link -->
     </header><!-- .entry-header -->
+    
     <!--<p>{{ post.timestamp }}</p>-->
     <div class="entry-content">
+    {% if post.abstract == Null %}
     {% autoescape off %}
         {{ post.body }}
     {% endautoescape %}
-        
-    </div><!-- .entry-content -->
+    {%else%}    
+    {% autoescape off %}
+        {{ post.abstract }}
+    {% endautoescape %}
+    {% endif %}
+</div><!-- .entry-content -->
+
 </article>
 {% endfor %}
 {% endblock %}

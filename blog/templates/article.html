@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% load comments %}
 
-{% block content %}
+{% block title %}
+<title>{{blog.title}}</title>
+{% endblock %}
 
+{% block content %}
 <article>
     <header class="entry-header">
     <h1 class="entry-title">{{ blog.title }}</h1>
@@ -15,6 +18,11 @@
     <footer class="entry-meta">
     本文发布于 <a><time class="entry-date" >{{blog.timestamp}}</time></a>
     </footer><!-- .entry-meta -->
+    <br>
+<div class="sharing">
+分享到： 
+<a href="#" onclick="location.href='http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href);return false;">Weibo</a>
+</div>
 </article>
 <nav class="nav-single">
 
@@ -34,7 +42,7 @@
     <article  class="comment">
     <header class="comment-meta comment-author vcard">
     <img alt='' src='/site_media/image/django.gif' height='44' width='44' />
-        <cite>{{ comment.name }}</cite>
+    <cite><a>{{forloop.counter}}#</a>&nbsp&nbsp&nbsp{{ comment.name }}</cite>
         <time>{{ comment.submit_date|date:"F,j,Y" }} </time>
     </header><!-- .comment-meta -->
 
