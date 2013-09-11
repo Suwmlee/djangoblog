@@ -1,23 +1,26 @@
-##Django blog
+介绍
+----
+一个基于 django 开发的 blog 程序，演示站点：[suwmlee.duapp.com][1]。特性包括：
 
-一个基于django开发的Blog程序。演示站点：http://suwmlee.duapp.com/
+  1. HTML5
+  2. 友情链接
+  3. 主题
+  4. RSS
+  5. Tinymce
+  6. 内置评论系统
 
-1.tinymce
-2.内置评论
-3.友情链接
-4.主题
-5.RSS
+依赖
+----
 
-##依赖
+1. django >= 1.4
+2. Tinymce
 
-1.数据库: MYSQL 5.6
-2.django >=1.4
+安装步骤
+--------
 
-##安装步骤
+1. 创建数据库
+2. 执行 `python manage.py syncdb` 同步数据库
+3. 执行 `python manage.py runserver 0.0.0.0:8000` 启动临时服务器
+4. 浏览器访问 `http://localhost:8000`，后台地址是 `http://localhost:8000/e/admin/`，口令在第 `3` 步时创建
 
-1.创建数据库
-2.执行python manage.py syncdb 同步数据库
-3.python manage.py runserver 启动
-4.浏览器访问 http://127.0.0.1:8000 ,后台地址 http://127.0.0.1:8000/e/admin/ ,口令在第二部创建
-
-
+[1]: http://suwmlee.duapp.com
