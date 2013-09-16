@@ -14,22 +14,61 @@
     {% autoescape off %}
         {{ blog.body }}
     {% endautoescape %}
+
     </div><!-- .entry-content -->
     <footer class="entry-meta">
     本文发布于 <a><time class="entry-date" >{{blog.timestamp}}</time></a>
     </footer><!-- .entry-meta -->
     <br>
-<div class="sharing">
-分享到： 
-<a href="#" onclick="location.href='http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href);return false;">Weibo</a>
-</div>
+    <div id='jiathis' style='margin-bottom:40px;'>
+		<!-- JiaThis Button BEGIN -->
+		<div id="ckepop"><span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_tqq"></a>
+		<a class="jiathis_button_renren"></a>
+		<a class="jiathis_button_kaixin001"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_fb"></a>
+		<a class="jiathis_button_twitter"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a class="jiathis_button_linkedin"></a>
+		<a class="jiathis_button_delicious"></a>
+		<a class="jiathis_counter_style"></a>
+		</div>
+		<script type="text/javascript" >
+		var jiathis_config={
+			data_track_clickback:true,
+			summary:"",
+			hideMore:true
+		}
+		</script>
+		<script type="text/javascript" 
+		src="http://v2.jiathis.com/code/jia.js?uid=1579398" charset="utf-8">
+		</script>
+		<!-- JiaThis Button END -->
+	</div>
+    <!--<div class="sharing">-->
+<!--分享到： -->
+<!--<a href="#" onclick="location.href='http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href);return false;">Weibo</a>-->
+<!--</div>-->
 </article>
+{% if tflag == 2 %}
 <nav class="nav-single">
-
-<span class="nav-previous"><a href="/article/{{pre}}" rel="prev"><span class="meta-nav">&larr;</span>上一篇</a></span>
-<span class="nav-next"><a href="/article/{{nex}}" rel="next">下一篇 <span class="meta-nav">&rarr;</span></a></span>
+<span class="nav-previous"><a href="/article/{{pre.id}}" rel="prev"><span class="meta-nav">&larr;</span>上一篇{{pre.title}}</a></span>
+<span class="nav-next"><a href="/article/{{nex.id}}" rel="next">下一篇 {{nex.title}}<span class="meta-nav">&rarr;</span></a></span>
 </nav><!-- .nav-single -->
-
+{% endif %}
+{% if tflag == 1 %}
+<nav class="nav-single">
+<span class="nav-previous"><a href="/article/{{pre.id}}" rel="prev"><span class="meta-nav">&larr;</span>上一篇{{pre.title}}</a></span>
+</nav><!-- .nav-single -->
+{% endif %}
+{% if tflag == 0 %}
+<nav class="nav-single">
+<span class="nav-next"><a href="/article/{{nex.id}}" rel="next">下一篇 {{nex.title}}<span class="meta-nav">&rarr;</span></a></span>
+</nav><!-- .nav-single -->
+{% endif %}
 <div id="comments" class="comments-area">
 
     {% get_comment_count for blog as comment_count %}    
@@ -49,6 +88,7 @@
         {% autoescape off %}
             {{ comment.comment }}           
         {% endautoescape %}
+
     </article><!-- #comment-## -->
     </li>
     {% endfor %}
@@ -64,7 +104,7 @@
     <p><label for="id_name">姓名：</label><input type="text" id="id_name" class="input-xlarge" name="name" placeholder="please enter name" required="required"></p>
     <p><label for="id_email">邮箱：</label><input class="input-xlarge" id="id_email" type="email" name="email" placeholder="please enter email" required="required"></p>
     <p><label for="id_comment">评论：</label></p>
-    <p><textarea id="id_comment" rows="15" cols="80" name="comment"></textarea></p>
+    <p><textarea id="id_comment" rows="10" cols="70" name="comment"></textarea></p>
     <p style="display:none;"><label for="id_honeypot">如果你在该字段中输入任何内容，那么你的评论就会被视为垃圾评论。</label> <input type="text" name="honeypot" id="id_honeypot"></p>
     <p><input name="post" value="发表" type="submit" /></p>
     <input type='hidden' name='next' value='{% url showcomment blog.id %}'/>

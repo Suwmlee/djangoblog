@@ -16,23 +16,31 @@
 <!--[if lt IE 9]>
 <script src="/site_media/js/ie.js" type="text/javascript"></script>
 <![endif]-->
-<link rel='stylesheet' id='twentytwelve-style-css'  href='/site_media/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='/site_media/css/style.css' type='text/css' media='all' />
 <!--[if lt IE 9]>
-<link rel='stylesheet' id='twentytwelve-ie-css'  href='/site_media/css/ie.css' type='text/css' media='all' />
+<link rel='stylesheet' id='ie-css'  href='/site_media/css/ie.css' type='text/css' media='all' />
 <![endif]-->
 <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
 <style type="text/css" id="custom-background-css">
 body.custom-background { background-color: #5b5b5b; }
 </style>
-<!--tinyMCE  -->
+
+tinyMCE  
+<script type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script>
 <script language="javascript" type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script> 
 <script language="javascript" type="text/javascript"> 
-   tinyMCE.init({ 
-      mode : "textareas" 
-   }); 
+    tinyMCE.init({ 
+        mode : "textareas" 
+        plugins :"syntaxhl", 
+    }); 
 </script> 
-<!--/tinyMCE -->
+/tinyMCE 
 
+<!--syntaxhighlighter-->
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+<link type="text/css" rel="stylesheet" href="/static/syntaxhighlighter/styles/shCoreDefault.css"/>
+<script type="text/javascript" src="/static/syntaxhighlighter/scripts/shAutoloader.js"></script>
+<!--<script type="text/javascript">SyntaxHighlighter.all();</script>-->
 </head>
 
 <body class="single single-post postid-520 single-format-standard custom-background custom-font-enabled single-author">
@@ -116,6 +124,44 @@ body.custom-background { background-color: #5b5b5b; }
 	</footer><!-- #colophon -->
 
 </div><!-- #page -->
+<script type="text/javascript">
+function path() {
+	var args = arguments,
+	result = [];
+  for(var i = 0; i < args.length; i++)
+	result.push(args[i].replace('@', '/static/syntaxhighlighter/scripts/'));
+  return result
+};
+SyntaxHighlighter.autoloader.apply(null, path(
+  'applescript            @shBrushAppleScript.js',
+  'actionscript3 as3      @shBrushAS3.js',
+  'bash shell             @shBrushBash.js',
+  'coldfusion cf          @shBrushColdFusion.js',
+  'cpp c                  @shBrushCpp.js',
+  'c# c-sharp csharp      @shBrushCSharp.js',
+  'css                    @shBrushCss.js',
+  'delphi pascal          @shBrushDelphi.js',
+  'diff patch pas         @shBrushDiff.js',
+  'erl erlang             @shBrushErlang.js',
+  'groovy                 @shBrushGroovy.js',
+  'java                   @shBrushJava.js',
+  'jfx javafx             @shBrushJavaFX.js',
+  'js jscript javascript  @shBrushJScript.js',
+  'perl pl                @shBrushPerl.js',
+  'php                    @shBrushPhp.js',
+  'text plain             @shBrushPlain.js',
+  'py python              @shBrushPython.js',
+  'ruby rails ror rb      @shBrushRuby.js',
+  'sass scss              @shBrushSass.js',
+  'scala                  @shBrushScala.js',
+  'sql                    @shBrushSql.js',
+  'vb vbnet               @shBrushVb.js',
+  'xml xhtml xslt html    @shBrushXml.js'
+));
+SyntaxHighlighter.defaults['quick-code'] = false;
+SyntaxHighlighter.all();
+</script>
+
 
 </body>
 </html>

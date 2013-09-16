@@ -36,9 +36,10 @@ def show_post(request, pid):
     links = linking.objects.all().order_by("-id")
     #posts = BlogPost.objects.filter(id=int(pid))
     pid=int(pid)
-    floor=1;
+    tflag=2;
     if pid==1:
         pre=1
+        tflag=0
     else:
         pre=pid-1
     i=0
@@ -47,17 +48,20 @@ def show_post(request, pid):
     if pid>=i:
         pid=i
         nex=i
+        tflag=1
     else:
         nex=pid+1
+    pre = BlogPost.objects.get(id=pre)
+    nex = BlogPost.objects.get(id=nex)
     t = loader.get_template("article.html")
     c = Context({ 'posts' : posts ,
                   'links' : links ,
                   'pre'   : pre   ,
                   'nex'   : nex   ,
-                  'floor' : floor ,
+                  'tflag' : tflag ,
                   'pid'   : pid})
     #return HttpResponse(t.render(c),)
-    return render_to_response("article.html", {'posts':posts,'links':links,'pre':pre,'nex':nex,'pid':pid,'blog':blog}, context_instance=RequestContext(request))
+    return render_to_response("article.html", {'posts':posts,'links':links,'pre':pre,'nex':nex,'pid':pid,'blog':blog,'tflag':tflag}, context_instance=RequestContext(request))
 
 #def blog_show_comment(request, id=''):
     #blog = BlogPost.objects.get(id=id)
